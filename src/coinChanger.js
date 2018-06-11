@@ -1,16 +1,14 @@
 function CoinChanger (){
-  this.change = []
-  this.tender = 100.00
+  this.coins = [50, 50, 20, 20, 10, 5, 2, 2, 1]
 };
 
 CoinChanger.prototype.changeFor = function(amount){
-  if (amount < 5){
-    for(var i=0; i < amount; i++){
-      this.change.push(1);
+  var change = []
+  this.coins.forEach(function(coin){
+    if (amount >= coin){
+    change.push(coin)
+    amount -= coin
     }
-  }
-  else{
-    this.change.push(5)  
-  }
-  return this.change
+  });
+  return change
 };
